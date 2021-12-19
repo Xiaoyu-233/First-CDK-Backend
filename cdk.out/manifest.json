@@ -23,7 +23,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/15917524f6b61418e307ff8ce863144226243274b8ba844f874376b2f9db8361.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/217749ec4e1779bb55c43fe4e5d8c1c80adfdfd5831313d54b6107806a3c4c30.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -35,6 +35,66 @@
         "First-CDK.assets"
       ],
       "metadata": {
+        "/First-CDK/helloAPI/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "helloAPICDEF7798"
+          }
+        ],
+        "/First-CDK/helloAPI/CloudWatchRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "helloAPICloudWatchRoleC5793B11"
+          }
+        ],
+        "/First-CDK/helloAPI/Account": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "helloAPIAccount3A98B996"
+          }
+        ],
+        "/First-CDK/helloAPI/Deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "helloAPIDeployment27EA2146a28d0afda3b2c997fdc2c6a72e7aba74"
+          }
+        ],
+        "/First-CDK/helloAPI/DeploymentStage.prod/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "helloAPIDeploymentStageprodD4FC1550"
+          }
+        ],
+        "/First-CDK/helloAPI/Endpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "helloAPIEndpointBEEA8277"
+          }
+        ],
+        "/First-CDK/helloAPI/Default/hello/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "helloAPIhello1A20D2A4"
+          }
+        ],
+        "/First-CDK/helloAPI/Default/hello/GET/ApiPermission.FirstCDKhelloAPIB1E9ADAE.GET..hello": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "helloAPIhelloGETApiPermissionFirstCDKhelloAPIB1E9ADAEGEThelloA6194004"
+          }
+        ],
+        "/First-CDK/helloAPI/Default/hello/GET/ApiPermission.Test.FirstCDKhelloAPIB1E9ADAE.GET..hello": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "helloAPIhelloGETApiPermissionTestFirstCDKhelloAPIB1E9ADAEGEThello463922F5"
+          }
+        ],
+        "/First-CDK/helloAPI/Default/hello/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "helloAPIhelloGET4BF643C0"
+          }
+        ],
         "/First-CDK/helloLambda/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",

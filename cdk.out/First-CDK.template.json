@@ -1,5 +1,241 @@
 {
   "Resources": {
+    "helloAPICDEF7798": {
+      "Type": "AWS::ApiGateway::RestApi",
+      "Properties": {
+        "Name": "helloAPI"
+      },
+      "Metadata": {
+        "aws:cdk:path": "First-CDK/helloAPI/Resource"
+      }
+    },
+    "helloAPICloudWatchRoleC5793B11": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "apigateway.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+              ]
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "First-CDK/helloAPI/CloudWatchRole/Resource"
+      }
+    },
+    "helloAPIAccount3A98B996": {
+      "Type": "AWS::ApiGateway::Account",
+      "Properties": {
+        "CloudWatchRoleArn": {
+          "Fn::GetAtt": [
+            "helloAPICloudWatchRoleC5793B11",
+            "Arn"
+          ]
+        }
+      },
+      "DependsOn": [
+        "helloAPICDEF7798"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "First-CDK/helloAPI/Account"
+      }
+    },
+    "helloAPIDeployment27EA2146a28d0afda3b2c997fdc2c6a72e7aba74": {
+      "Type": "AWS::ApiGateway::Deployment",
+      "Properties": {
+        "RestApiId": {
+          "Ref": "helloAPICDEF7798"
+        },
+        "Description": "Automatically created by the RestApi construct"
+      },
+      "DependsOn": [
+        "helloAPIhelloGET4BF643C0",
+        "helloAPIhello1A20D2A4"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "First-CDK/helloAPI/Deployment/Resource"
+      }
+    },
+    "helloAPIDeploymentStageprodD4FC1550": {
+      "Type": "AWS::ApiGateway::Stage",
+      "Properties": {
+        "RestApiId": {
+          "Ref": "helloAPICDEF7798"
+        },
+        "DeploymentId": {
+          "Ref": "helloAPIDeployment27EA2146a28d0afda3b2c997fdc2c6a72e7aba74"
+        },
+        "StageName": "prod"
+      },
+      "Metadata": {
+        "aws:cdk:path": "First-CDK/helloAPI/DeploymentStage.prod/Resource"
+      }
+    },
+    "helloAPIhello1A20D2A4": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Fn::GetAtt": [
+            "helloAPICDEF7798",
+            "RootResourceId"
+          ]
+        },
+        "PathPart": "hello",
+        "RestApiId": {
+          "Ref": "helloAPICDEF7798"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "First-CDK/helloAPI/Default/hello/Resource"
+      }
+    },
+    "helloAPIhelloGETApiPermissionFirstCDKhelloAPIB1E9ADAEGEThelloA6194004": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "helloLambda79DCE371",
+            "Arn"
+          ]
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "helloAPICDEF7798"
+              },
+              "/",
+              {
+                "Ref": "helloAPIDeploymentStageprodD4FC1550"
+              },
+              "/GET/hello"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "First-CDK/helloAPI/Default/hello/GET/ApiPermission.FirstCDKhelloAPIB1E9ADAE.GET..hello"
+      }
+    },
+    "helloAPIhelloGETApiPermissionTestFirstCDKhelloAPIB1E9ADAEGEThello463922F5": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "helloLambda79DCE371",
+            "Arn"
+          ]
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "helloAPICDEF7798"
+              },
+              "/test-invoke-stage/GET/hello"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "First-CDK/helloAPI/Default/hello/GET/ApiPermission.Test.FirstCDKhelloAPIB1E9ADAE.GET..hello"
+      }
+    },
+    "helloAPIhelloGET4BF643C0": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "GET",
+        "ResourceId": {
+          "Ref": "helloAPIhello1A20D2A4"
+        },
+        "RestApiId": {
+          "Ref": "helloAPICDEF7798"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "helloLambda79DCE371",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "First-CDK/helloAPI/Default/hello/GET/Resource"
+      }
+    },
     "helloLambdaServiceRoleBB046714": {
       "Type": "AWS::IAM::Role",
       "Properties": {
@@ -65,12 +301,40 @@
     "CDKMetadata": {
       "Type": "AWS::CDK::Metadata",
       "Properties": {
-        "Analytics": "v2:deflate64:H4sIAAAAAAAA/zWMSQ6DMAwA38I9uAWk3gtSHwAPQCZJkVkcCSftIeLvDaCexh7LU0IJ9wy/kmsz5wsNEDuPelZJ9XHBdTAI8RVYe3Ksmjf/510RrhBbt9hDH9yVVD2KWC/wPJB2qIOera9R0vmUqT8Sj+eTFRc2fQYax4auMDtjYZLbp3hAUUGRTUKUb4E9rRbaiz/W5PB5ugAAAA=="
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WQwU7DMBBEv6V3ZyGt1HtaxA2BygdUW2cJ28R2lLVbVVH+nTUGUU7zdrwej7yGNTyu8CqVbftq4BPM7xFtb9Q6zjhyh5GueIP5QBKbkc3+w99hY21IPponGodwc6So7t2kaR1lr4BeDWmytEP5G34yC79Q/AxttgothtHp82Eoe6qLGdCdWoRZjTeaHItw8OY5eRszqP3Li5HNEUUoCjRZdIZdsj3F3GHJu68pjima7+Nck333r5LyPviWS54PLcFZHi71FuoN1KuzMFeT/gI7gkPRL2S1O5xYAQAA"
       },
       "Metadata": {
         "aws:cdk:path": "First-CDK/CDKMetadata/Default"
       },
       "Condition": "CDKMetadataAvailable"
+    }
+  },
+  "Outputs": {
+    "helloAPIEndpointBEEA8277": {
+      "Value": {
+        "Fn::Join": [
+          "",
+          [
+            "https://",
+            {
+              "Ref": "helloAPICDEF7798"
+            },
+            ".execute-api.",
+            {
+              "Ref": "AWS::Region"
+            },
+            ".",
+            {
+              "Ref": "AWS::URLSuffix"
+            },
+            "/",
+            {
+              "Ref": "helloAPIDeploymentStageprodD4FC1550"
+            },
+            "/"
+          ]
+        ]
+      }
     }
   },
   "Conditions": {
