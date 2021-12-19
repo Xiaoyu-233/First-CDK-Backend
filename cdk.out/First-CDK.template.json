@@ -325,10 +325,77 @@
         "aws:asset:property": "Code"
       }
     },
+    "helloLambdaNodeJsServiceRole17C143C3": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+              ]
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "First-CDK/helloLambdaNodeJs/ServiceRole/Resource"
+      }
+    },
+    "helloLambdaNodeJs14E63891": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+          },
+          "S3Key": "8085028a58295390c7e50794a765fae5a2934c25b56dc0f958a2da8e269a8e16.zip"
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "helloLambdaNodeJsServiceRole17C143C3",
+            "Arn"
+          ]
+        },
+        "Environment": {
+          "Variables": {
+            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+          }
+        },
+        "Handler": "index.handler",
+        "Runtime": "nodejs14.x"
+      },
+      "DependsOn": [
+        "helloLambdaNodeJsServiceRole17C143C3"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "First-CDK/helloLambdaNodeJs/Resource",
+        "aws:asset:path": "asset.8085028a58295390c7e50794a765fae5a2934c25b56dc0f958a2da8e269a8e16",
+        "aws:asset:is-bundled": true,
+        "aws:asset:property": "Code"
+      }
+    },
     "CDKMetadata": {
       "Type": "AWS::CDK::Metadata",
       "Properties": {
-        "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WQQU/DMAyFf8vuWaCbxL0b4jaBBvfJTUzx2iRVnTBVVf87zgLaOPl7T86znY3e6McVXHhtbLfuqdHzewTTKbFOMwzUQsQLTHo+Isd6ILX/9HdYGxOSj+oZhz5MDgXFvVOS1mL2CsjTkEaDO+Cb+M0sfMD4FWy2Ci2KwMn40Jc+qYvqwTUW9CzGG46OmCl49ZK8iRnE/uNF2cmDC1Yu+4CmhFxhUbw9ATNG1nUuovUumQ5j3m7Jja8pDineFr325UvIt/+2Ft4Hb6mM9MGiPvPDd/Wkq62uVmcmWo/yUeRQH0v9AZXmVFh7AQAA"
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WQzW7DIBCEnyV3sq0TqXcnVW/9Udq7tQbqYhuwvNDIsvzuXUwrp6f5dgSzDAc4wP0Or7SXqtv3pob5PaDsBFvVjINpMOgrTjBfNIVyMOL86W6wlNJHF8SjHno/Wc3I7s3EaY1OXga+6uMo9QlpG34zMz/r8OVVsjItwqDl9b7P51gX0aOtFcLMxpserSEy3omn6GRIwPYfL0JNDq1X3OwD6xyywiLoWCGRDgRlEp7hFGWnw/q6vKNyXumW4GWVLZVTXmMYYtharCGppnHNv0rMZ++UyTdTILR09108QHGEYteSMfuRf9FYDZesPyMnLOaYAQAA"
       },
       "Metadata": {
         "aws:cdk:path": "First-CDK/CDKMetadata/Default"
