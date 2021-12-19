@@ -23,7 +23,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/217749ec4e1779bb55c43fe4e5d8c1c80adfdfd5831313d54b6107806a3c4c30.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/5c1ee6a470663f304b37e0e4f3febfc33f4dd060ff4f246ef890947d4b5b91ac.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -95,6 +95,20 @@
             "data": "helloAPIhelloGET4BF643C0"
           }
         ],
+        "/First-CDK/MyFirstTable": [
+          {
+            "type": "aws:cdk:hasPhysicalName",
+            "data": {
+              "Ref": "MyFirstTable42532361"
+            }
+          }
+        ],
+        "/First-CDK/MyFirstTable/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyFirstTable42532361"
+          }
+        ],
         "/First-CDK/helloLambda/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -105,6 +119,18 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "helloLambda79DCE371"
+          }
+        ],
+        "/First-CDK/helloLambdaNodeJs/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "helloLambdaNodeJsServiceRole17C143C3"
+          }
+        ],
+        "/First-CDK/helloLambdaNodeJs/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "helloLambdaNodeJs14E63891"
           }
         ],
         "/First-CDK/CDKMetadata/Default": [

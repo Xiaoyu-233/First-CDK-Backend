@@ -236,6 +236,33 @@
         "aws:cdk:path": "First-CDK/helloAPI/Default/hello/GET/Resource"
       }
     },
+    "MyFirstTable42532361": {
+      "Type": "AWS::DynamoDB::Table",
+      "Properties": {
+        "KeySchema": [
+          {
+            "AttributeName": "tableId",
+            "KeyType": "HASH"
+          }
+        ],
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "tableId",
+            "AttributeType": "S"
+          }
+        ],
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": 5,
+          "WriteCapacityUnits": 5
+        },
+        "TableName": "MyFirstTable"
+      },
+      "UpdateReplacePolicy": "Retain",
+      "DeletionPolicy": "Retain",
+      "Metadata": {
+        "aws:cdk:path": "First-CDK/MyFirstTable/Resource"
+      }
+    },
     "helloLambdaServiceRoleBB046714": {
       "Type": "AWS::IAM::Role",
       "Properties": {
@@ -298,10 +325,77 @@
         "aws:asset:property": "Code"
       }
     },
+    "helloLambdaNodeJsServiceRole17C143C3": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+              ]
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "First-CDK/helloLambdaNodeJs/ServiceRole/Resource"
+      }
+    },
+    "helloLambdaNodeJs14E63891": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+          },
+          "S3Key": "8085028a58295390c7e50794a765fae5a2934c25b56dc0f958a2da8e269a8e16.zip"
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "helloLambdaNodeJsServiceRole17C143C3",
+            "Arn"
+          ]
+        },
+        "Environment": {
+          "Variables": {
+            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+          }
+        },
+        "Handler": "index.handler",
+        "Runtime": "nodejs14.x"
+      },
+      "DependsOn": [
+        "helloLambdaNodeJsServiceRole17C143C3"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "First-CDK/helloLambdaNodeJs/Resource",
+        "aws:asset:path": "asset.8085028a58295390c7e50794a765fae5a2934c25b56dc0f958a2da8e269a8e16",
+        "aws:asset:is-bundled": true,
+        "aws:asset:property": "Code"
+      }
+    },
     "CDKMetadata": {
       "Type": "AWS::CDK::Metadata",
       "Properties": {
-        "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WQwU7DMBBEv6V3ZyGt1HtaxA2BygdUW2cJ28R2lLVbVVH+nTUGUU7zdrwej7yGNTyu8CqVbftq4BPM7xFtb9Q6zjhyh5GueIP5QBKbkc3+w99hY21IPponGodwc6So7t2kaR1lr4BeDWmytEP5G34yC79Q/AxttgothtHp82Eoe6qLGdCdWoRZjTeaHItw8OY5eRszqP3Li5HNEUUoCjRZdIZdsj3F3GHJu68pjima7+Nck333r5LyPviWS54PLcFZHi71FuoN1KuzMFeT/gI7gkPRL2S1O5xYAQAA"
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WQzW7DIBCEnyV3sq0TqXcnVW/9Udq7tQbqYhuwvNDIsvzuXUwrp6f5dgSzDAc4wP0Or7SXqtv3pob5PaDsBFvVjINpMOgrTjBfNIVyMOL86W6wlNJHF8SjHno/Wc3I7s3EaY1OXga+6uMo9QlpG34zMz/r8OVVsjItwqDl9b7P51gX0aOtFcLMxpserSEy3omn6GRIwPYfL0JNDq1X3OwD6xyywiLoWCGRDgRlEp7hFGWnw/q6vKNyXumW4GWVLZVTXmMYYtharCGppnHNv0rMZ++UyTdTILR09108QHGEYteSMfuRf9FYDZesPyMnLOaYAQAA"
       },
       "Metadata": {
         "aws:cdk:path": "First-CDK/CDKMetadata/Default"
