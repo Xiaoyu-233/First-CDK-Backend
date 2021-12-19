@@ -368,6 +368,54 @@
               "version": "2.2.0"
             }
           },
+          "MyFirstTable": {
+            "id": "MyFirstTable",
+            "path": "First-CDK/MyFirstTable",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "First-CDK/MyFirstTable/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::DynamoDB::Table",
+                  "aws:cdk:cloudformation:props": {
+                    "keySchema": [
+                      {
+                        "attributeName": "tableId",
+                        "keyType": "HASH"
+                      }
+                    ],
+                    "attributeDefinitions": [
+                      {
+                        "attributeName": "tableId",
+                        "attributeType": "S"
+                      }
+                    ],
+                    "provisionedThroughput": {
+                      "readCapacityUnits": 5,
+                      "writeCapacityUnits": 5
+                    },
+                    "tableName": "MyFirstTable"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_dynamodb.CfnTable",
+                  "version": "2.2.0"
+                }
+              },
+              "ScalingRole": {
+                "id": "ScalingRole",
+                "path": "First-CDK/MyFirstTable/ScalingRole",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.2.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_dynamodb.Table",
+              "version": "2.2.0"
+            }
+          },
           "helloLambda": {
             "id": "helloLambda",
             "path": "First-CDK/helloLambda",

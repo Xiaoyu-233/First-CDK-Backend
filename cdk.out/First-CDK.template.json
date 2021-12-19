@@ -236,6 +236,33 @@
         "aws:cdk:path": "First-CDK/helloAPI/Default/hello/GET/Resource"
       }
     },
+    "MyFirstTable42532361": {
+      "Type": "AWS::DynamoDB::Table",
+      "Properties": {
+        "KeySchema": [
+          {
+            "AttributeName": "tableId",
+            "KeyType": "HASH"
+          }
+        ],
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "tableId",
+            "AttributeType": "S"
+          }
+        ],
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": 5,
+          "WriteCapacityUnits": 5
+        },
+        "TableName": "MyFirstTable"
+      },
+      "UpdateReplacePolicy": "Retain",
+      "DeletionPolicy": "Retain",
+      "Metadata": {
+        "aws:cdk:path": "First-CDK/MyFirstTable/Resource"
+      }
+    },
     "helloLambdaServiceRoleBB046714": {
       "Type": "AWS::IAM::Role",
       "Properties": {
@@ -301,7 +328,7 @@
     "CDKMetadata": {
       "Type": "AWS::CDK::Metadata",
       "Properties": {
-        "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WQwU7DMBBEv6V3ZyGt1HtaxA2BygdUW2cJ28R2lLVbVVH+nTUGUU7zdrwej7yGNTyu8CqVbftq4BPM7xFtb9Q6zjhyh5GueIP5QBKbkc3+w99hY21IPponGodwc6So7t2kaR1lr4BeDWmytEP5G34yC79Q/AxttgothtHp82Eoe6qLGdCdWoRZjTeaHItw8OY5eRszqP3Li5HNEUUoCjRZdIZdsj3F3GHJu68pjima7+Nck333r5LyPviWS54PLcFZHi71FuoN1KuzMFeT/gI7gkPRL2S1O5xYAQAA"
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WQQU/DMAyFf8vuWaCbxL0b4jaBBvfJTUzx2iRVnTBVVf87zgLaOPl7T86znY3e6McVXHhtbLfuqdHzewTTKbFOMwzUQsQLTHo+Isd6ILX/9HdYGxOSj+oZhz5MDgXFvVOS1mL2CsjTkEaDO+Cb+M0sfMD4FWy2Ci2KwMn40Jc+qYvqwTUW9CzGG46OmCl49ZK8iRnE/uNF2cmDC1Yu+4CmhFxhUbw9ATNG1nUuovUumQ5j3m7Jja8pDineFr325UvIt/+2Ft4Hb6mM9MGiPvPDd/Wkq62uVmcmWo/yUeRQH0v9AZXmVFh7AQAA"
       },
       "Metadata": {
         "aws:cdk:path": "First-CDK/CDKMetadata/Default"
