@@ -7,3 +7,4 @@ Will try to implement several AWS services and tools which includes:
 3. AWS Lambda
 4. AWS DynamoDB
 5. AWS Cognito
+6. AWS CloudWatch
