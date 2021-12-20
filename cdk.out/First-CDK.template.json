@@ -60,7 +60,7 @@
         "aws:cdk:path": "First-CDK/helloAPI/Account"
       }
     },
-    "helloAPIDeployment27EA2146a28d0afda3b2c997fdc2c6a72e7aba74": {
+    "helloAPIDeployment27EA2146664350ae45574f638a2cd7c045f67722": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -83,7 +83,7 @@
           "Ref": "helloAPICDEF7798"
         },
         "DeploymentId": {
-          "Ref": "helloAPIDeployment27EA2146a28d0afda3b2c997fdc2c6a72e7aba74"
+          "Ref": "helloAPIDeployment27EA2146664350ae45574f638a2cd7c045f67722"
         },
         "StageName": "prod"
       },
@@ -115,7 +115,7 @@
         "Action": "lambda:InvokeFunction",
         "FunctionName": {
           "Fn::GetAtt": [
-            "helloLambda79DCE371",
+            "helloLambdaNodeJs14E63891",
             "Arn"
           ]
         },
@@ -159,7 +159,7 @@
         "Action": "lambda:InvokeFunction",
         "FunctionName": {
           "Fn::GetAtt": [
-            "helloLambda79DCE371",
+            "helloLambdaNodeJs14E63891",
             "Arn"
           ]
         },
@@ -222,7 +222,7 @@
                 ":lambda:path/2015-03-31/functions/",
                 {
                   "Fn::GetAtt": [
-                    "helloLambda79DCE371",
+                    "helloLambdaNodeJs14E63891",
                     "Arn"
                   ]
                 },
@@ -359,6 +359,30 @@
         "aws:cdk:path": "First-CDK/helloLambdaNodeJs/ServiceRole/Resource"
       }
     },
+    "helloLambdaNodeJsServiceRoleDefaultPolicy14D90D8C": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "s3:ListAllMyBuckets",
+              "Effect": "Allow",
+              "Resource": "*"
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "helloLambdaNodeJsServiceRoleDefaultPolicy14D90D8C",
+        "Roles": [
+          {
+            "Ref": "helloLambdaNodeJsServiceRole17C143C3"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "First-CDK/helloLambdaNodeJs/ServiceRole/DefaultPolicy/Resource"
+      }
+    },
     "helloLambdaNodeJs14E63891": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
@@ -366,7 +390,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "8085028a58295390c7e50794a765fae5a2934c25b56dc0f958a2da8e269a8e16.zip"
+          "S3Key": "83631e2214b7b6f052d16c02ba3814a217e294520fcbff19030a908810b2b3b9.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -383,11 +407,12 @@
         "Runtime": "nodejs14.x"
       },
       "DependsOn": [
+        "helloLambdaNodeJsServiceRoleDefaultPolicy14D90D8C",
         "helloLambdaNodeJsServiceRole17C143C3"
       ],
       "Metadata": {
         "aws:cdk:path": "First-CDK/helloLambdaNodeJs/Resource",
-        "aws:asset:path": "asset.8085028a58295390c7e50794a765fae5a2934c25b56dc0f958a2da8e269a8e16",
+        "aws:asset:path": "asset.83631e2214b7b6f052d16c02ba3814a217e294520fcbff19030a908810b2b3b9",
         "aws:asset:is-bundled": true,
         "aws:asset:property": "Code"
       }
@@ -395,7 +420,7 @@
     "CDKMetadata": {
       "Type": "AWS::CDK::Metadata",
       "Properties": {
-        "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WQzW7DIBCEnyV3sq0TqXcnVW/9Udq7tQbqYhuwvNDIsvzuXUwrp6f5dgSzDAc4wP0Or7SXqtv3pob5PaDsBFvVjINpMOgrTjBfNIVyMOL86W6wlNJHF8SjHno/Wc3I7s3EaY1OXga+6uMo9QlpG34zMz/r8OVVsjItwqDl9b7P51gX0aOtFcLMxpserSEy3omn6GRIwPYfL0JNDq1X3OwD6xyywiLoWCGRDgRlEp7hFGWnw/q6vKNyXumW4GWVLZVTXmMYYtharCGppnHNv0rMZ++UyTdTILR09108QHGEYteSMfuRf9FYDZesPyMnLOaYAQAA"
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WQzW7DIBCEnyV3sq0TqXcnVW/9Udq7hWHrrm3A8kIjy/K7F0wrp6f5ZgSzLAc4wP1OXnmvdLfvqYb53UvViRhVsxyokR6vcoL5guzLgcT5095gqZQL1otHHHo3GYwY0xsX2xpMWYZ41YVR4UnyZn47Mz+j/3I6RZkWQdLE8a7P55K+uZ7UlGymRfTS1FrCnCIcDTGTs+IpWOUTxPiPF6EnK43TcdUPWefWFRbBx0oyo2cok0QPp6A69Otz84zKOo0tw8sqW2tseQ1+CH5bay1Je5Nt/u0Y+eyspnwzFULLd9/FAxRHKHYtE+3H+K1kEC5ZfwCzwbZkqQEAAA=="
       },
       "Metadata": {
         "aws:cdk:path": "First-CDK/CDKMetadata/Default"
