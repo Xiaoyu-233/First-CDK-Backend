@@ -23,7 +23,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/5c1ee6a470663f304b37e0e4f3febfc33f4dd060ff4f246ef890947d4b5b91ac.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/bfb9010530b4a1fb0793c4fd4aa2097c0d54a9154c64d95a23fa3230f9d8287b.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -56,7 +56,7 @@
         "/First-CDK/helloAPI/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "helloAPIDeployment27EA2146a28d0afda3b2c997fdc2c6a72e7aba74"
+            "data": "helloAPIDeployment27EA2146664350ae45574f638a2cd7c045f67722"
           }
         ],
         "/First-CDK/helloAPI/DeploymentStage.prod/Resource": [

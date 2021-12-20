@@ -33,7 +33,7 @@ export class MyStack extends Stack{
         })
 
         // Hello API Lambda integration:
-        const helloLambdaIntegration = new LambdaIntegration(helloLambda)
+        const helloLambdaIntegration = new LambdaIntegration(helloLambdaNodeJs)
         const helloLambdaResource = this.api.root.addResource('hello')
         helloLambdaResource.addMethod('GET', helloLambdaIntegration)
     }

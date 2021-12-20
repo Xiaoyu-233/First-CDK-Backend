@@ -60,7 +60,7 @@
         "aws:cdk:path": "First-CDK/helloAPI/Account"
       }
     },
-    "helloAPIDeployment27EA2146a28d0afda3b2c997fdc2c6a72e7aba74": {
+    "helloAPIDeployment27EA2146664350ae45574f638a2cd7c045f67722": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -83,7 +83,7 @@
           "Ref": "helloAPICDEF7798"
         },
         "DeploymentId": {
-          "Ref": "helloAPIDeployment27EA2146a28d0afda3b2c997fdc2c6a72e7aba74"
+          "Ref": "helloAPIDeployment27EA2146664350ae45574f638a2cd7c045f67722"
         },
         "StageName": "prod"
       },
@@ -115,7 +115,7 @@
         "Action": "lambda:InvokeFunction",
         "FunctionName": {
           "Fn::GetAtt": [
-            "helloLambda79DCE371",
+            "helloLambdaNodeJs14E63891",
             "Arn"
           ]
         },
@@ -159,7 +159,7 @@
         "Action": "lambda:InvokeFunction",
         "FunctionName": {
           "Fn::GetAtt": [
-            "helloLambda79DCE371",
+            "helloLambdaNodeJs14E63891",
             "Arn"
           ]
         },
@@ -222,7 +222,7 @@
                 ":lambda:path/2015-03-31/functions/",
                 {
                   "Fn::GetAtt": [
-                    "helloLambda79DCE371",
+                    "helloLambdaNodeJs14E63891",
                     "Arn"
                   ]
                 },
@@ -366,7 +366,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "8085028a58295390c7e50794a765fae5a2934c25b56dc0f958a2da8e269a8e16.zip"
+          "S3Key": "617d7537faf7fa761d81ac1fbc6acd5df18fbbce68dc837839ccba8fb0d2734e.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -387,7 +387,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "First-CDK/helloLambdaNodeJs/Resource",
-        "aws:asset:path": "asset.8085028a58295390c7e50794a765fae5a2934c25b56dc0f958a2da8e269a8e16",
+        "aws:asset:path": "asset.617d7537faf7fa761d81ac1fbc6acd5df18fbbce68dc837839ccba8fb0d2734e",
         "aws:asset:is-bundled": true,
         "aws:asset:property": "Code"
       }

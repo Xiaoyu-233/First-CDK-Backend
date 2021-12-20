@@ -143,7 +143,7 @@
                           "Ref": "helloAPICDEF7798"
                         },
                         "deploymentId": {
-                          "Ref": "helloAPIDeployment27EA2146a28d0afda3b2c997fdc2c6a72e7aba74"
+                          "Ref": "helloAPIDeployment27EA2146664350ae45574f638a2cd7c045f67722"
                         },
                         "stageName": "prod"
                       }
@@ -211,7 +211,7 @@
                                 "action": "lambda:InvokeFunction",
                                 "functionName": {
                                   "Fn::GetAtt": [
-                                    "helloLambda79DCE371",
+                                    "helloLambdaNodeJs14E63891",
                                     "Arn"
                                   ]
                                 },
@@ -260,7 +260,7 @@
                                 "action": "lambda:InvokeFunction",
                                 "functionName": {
                                   "Fn::GetAtt": [
-                                    "helloLambda79DCE371",
+                                    "helloLambdaNodeJs14E63891",
                                     "Arn"
                                   ]
                                 },
@@ -327,7 +327,7 @@
                                         ":lambda:path/2015-03-31/functions/",
                                         {
                                           "Fn::GetAtt": [
-                                            "helloLambda79DCE371",
+                                            "helloLambdaNodeJs14E63891",
                                             "Arn"
                                           ]
                                         },
@@ -637,7 +637,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "8085028a58295390c7e50794a765fae5a2934c25b56dc0f958a2da8e269a8e16.zip"
+                      "s3Key": "617d7537faf7fa761d81ac1fbc6acd5df18fbbce68dc837839ccba8fb0d2734e.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
